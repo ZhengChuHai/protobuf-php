@@ -243,11 +243,7 @@ class FieldDescriptor
         if ($proto->hasJsonName()) {
             $json_name = $proto->getJsonName();
         } else {
-            $proto_name = $proto->getName();
-            $json_name = implode('', array_map('ucwords', explode('_', $proto_name)));
-            if ($proto_name[0] !== "_" && !ctype_upper($proto_name[0])) {
-                $json_name = lcfirst($json_name);
-            }
+            $json_name = $proto->getName();
         }
         $field->setJsonName($json_name);
 
