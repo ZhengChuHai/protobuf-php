@@ -1505,15 +1505,7 @@ class Message
             return $this->$oneof_name->getNumber() === $field->getNumber();
         }
 
-        $getter = $field->getGetter();
-        $values = $this->$getter();
-        if ($field->isMap()) {
-            return count($values) !== 0;
-        } elseif ($field->isRepeated()) {
-            return count($values) !== 0;
-        } else {
-            return $values !== $this->defaultValue($field);
-        }
+        return true; // 没有默认值也显示KEY
     }
 
     /**
